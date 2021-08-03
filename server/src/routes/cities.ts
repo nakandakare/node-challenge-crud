@@ -11,7 +11,7 @@ import {
 
 router.get("/all", findAllCities);
 router.post("/find", findOneCity);
-router.post("/create", createCity);
+router.post("/", createCity);
 router.get("/4", updateCity);
 router.get("/5", deleteCity);
 

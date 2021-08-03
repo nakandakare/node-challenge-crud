@@ -11,6 +11,7 @@ export const createCity = async (req: Request, res: Response) => {
     img,
   });
 
+  //Verifica si la ciudad ya se encuentra en la base de datos (case insensitive)
   try {
     const foundCity = await cityModel.findOne({ name: name.toLowerCase() });
     if (foundCity) {

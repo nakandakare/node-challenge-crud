@@ -22,6 +22,7 @@ const createCity = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         country,
         img,
     });
+    //Verifica si la ciudad ya se encuentra en la base de datos (case insensitive)
     try {
         const foundCity = yield City_1.default.findOne({ name: name.toLowerCase() });
         if (foundCity) {
