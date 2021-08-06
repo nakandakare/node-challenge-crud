@@ -1,6 +1,6 @@
 import { City, response } from "../city.module";
 import * as cityRepository from "../../repositories/city.repository";
-import { ICity } from "database/models/City";
+import { ICity } from "../../database/models/City";
 
 // Crea y guarda una nueva ciudad
 export const createCity = async (req: any, res = response) => {
