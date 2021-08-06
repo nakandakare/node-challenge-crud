@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-import { KEYS } from "./keys";
+//@ts-ignore
+import { KEYS } from "../keys";
 
 mongoose
   .connect(KEYS.mongoURI, {
