@@ -1,18 +1,15 @@
+// @ts-nocheck
 import { Router } from "express";
 const router: Router = Router();
 
-import {
-  createCity,
-  findAllCities,
-  findOneCity,
-  updateCity,
-  deleteCity
-} from "../controllers/cities.controllers";
+import { create, get } from "../cityCase/city.controllers";
 
-router.get("/all", findAllCities);
-router.post("/find", findOneCity);
-router.post("/", createCity);
-router.get("/4", updateCity);
-router.get("/5", deleteCity);
+/* obtener ciudades */
+router.get("/cities", get.getAllCities);
+router.get("/city/:id", get.getCitiesById);
+router.get("/city", get.getCityByQuery);
+
+/*crear una ciudad*/
+router.post("/", create.createCity);
 
 export default router;

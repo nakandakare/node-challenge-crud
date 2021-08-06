@@ -1,9 +1,9 @@
 import { model, Schema, Document } from "mongoose";
 
 export interface ICity extends Document {
-  name: string;
-  country: string;
-  img: string;
+  name?: string;
+  country?: string;
+  img?: string;
 }
 
 const citySchema = new Schema({

@@ -8,7 +8,7 @@ const cors_1 = __importDefault(require("cors"));
 const cities_1 = __importDefault(require("./routes/cities"));
 const morgan_1 = __importDefault(require("morgan"));
 //database
-require("./database");
+require("./database-connection");
 const app = express_1.default();
 //settings
 app.use(express_1.default.urlencoded({ extended: true }));

@@ -4,7 +4,7 @@ import citiesRoutes from './routes/cities';
 import morgan from 'morgan';
 
 //database
-import './database';
+import './database-connection';
 
 const app: Application = express();
 
