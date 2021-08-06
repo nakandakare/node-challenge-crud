@@ -22,4 +22,4 @@ const citySchema = new Schema({
   },
 });
 
-export default model<ICity>('city', citySchema);
+export default model<ICity>('City', citySchema);

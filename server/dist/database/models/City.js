@@ -16,5 +16,5 @@ const citySchema = new mongoose_1.Schema({
         required: [true, 'Image is required'],
     },
 });
-exports.default = mongoose_1.model('city', citySchema);
+exports.default = mongoose_1.model('City', citySchema);
 //# sourceMappingURL=City.js.map
