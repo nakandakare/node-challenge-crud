@@ -3,6 +3,7 @@ import cors from 'cors';
 import citiesRoutes from './routes/cities';
 import itineraryRoutes from './routes/itinerary';
 import morgan from 'morgan';
+import 'dotenv/config'
 
 //database
 import './database-connection';

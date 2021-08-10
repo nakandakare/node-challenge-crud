@@ -8,6 +8,7 @@ const cors_1 = __importDefault(require("cors"));
 const cities_1 = __importDefault(require("./routes/cities"));
 const itinerary_1 = __importDefault(require("./routes/itinerary"));
 const morgan_1 = __importDefault(require("morgan"));
+require("dotenv/config");
 //database
 require("./database-connection");
 const app = express_1.default();
