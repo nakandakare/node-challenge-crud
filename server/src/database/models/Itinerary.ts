@@ -62,7 +62,8 @@ const ItinerarySchema = new Schema({
       type: [ String ],
   },
   cityId: {
-    type: { type: Schema.Types.ObjectId, ref: "City" },
+    type: Schema.Types.ObjectId,
+    ref: "City",
     required: true
   }
 });

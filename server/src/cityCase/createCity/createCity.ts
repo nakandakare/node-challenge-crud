@@ -12,12 +12,12 @@ export const createCity = async (req: any, res = response) => {
   try {
     const foundCity = await cityRepository.getOneCity({ name: name?.toLowerCase() });
     if (foundCity) {
-      res.status(400).json({ message: `The city ${name} has already been saved in database` });
+      res.status(400).json({ message: `The city ${name} has already been saved in database`, ok: false });
     } else {
       const savedCity = await newCity.save();
-      res.json(savedCity);
+      res.json({ savedCity, ok: true });
     }
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: err.message, ok: false });
   }
 };
