@@ -4,10 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-//@ts-ignore
-const keys_1 = require("../keys");
 mongoose_1.default
-    .connect(keys_1.KEYS.mongoURI, {
+    .connect(process.env.mongoURI || '', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,

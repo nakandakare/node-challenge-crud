@@ -6,16 +6,18 @@ import { ICity } from "database/models/City";
 export const getAllCities = async (_req: Request, res = response) => {
   try {
     const cities: ICity[] = await cityRepository.getAllCities();
+    const count = await cityRepository.countCities();
 
     if (!cities) {
       return res.status(401).json({
         message: "Error fetching cities",
+        ok: false
       });
     }
 
-    res.json(cities);
+    res.status(200).json({ total: count, response: cities, ok: true });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: err.message, ok: false });
   }
 };
 
@@ -25,14 +27,15 @@ export const getCitiesById = async (req: any, res = response) => {
 
   try {
     const foundCity = await cityRepository.getOneCitiesById(id);
+    const count = await cityRepository.countCities();
 
     if (!foundCity) {
-      res.status(400).json({ message: "Error fetching city" });
+      res.status(400).json({ message: "Error fetching city", ok: false });
     }
 
-    res.json({ foundCity });
+    res.status(200).json({ total: count, foundCity, ok: true });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: err.message, ok: false });
   }
 };
 
@@ -44,13 +47,14 @@ export const getCityByQuery = async (req: any, res = response) => {
     const cities = await cityRepository.getCitiesByQueries({
       $or: [{ name }, { country }, { img }],
     });
+    const count = await cityRepository.countCities();
 
     if (!cities) {
-      return res.status(400).json({ message: "Error while fetching cities" });
+      return res.status(400).json({ message: "Error while fetching cities", ok: false });
     }
 
-    return res.status(200).json({ cities });
+    return res.status(200).json({ total: count, cities, count, ok: true });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: err.message, ok: false });
   }
 };

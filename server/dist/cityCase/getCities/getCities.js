@@ -35,15 +35,17 @@ const cityRepository = __importStar(require("../../repositories/city.repository"
 const getAllCities = (_req, res = city_module_1.response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const cities = yield cityRepository.getAllCities();
+        const count = yield cityRepository.countCities();
         if (!cities) {
             return res.status(401).json({
                 message: "Error fetching cities",
+                ok: false
             });
         }
-        res.json(cities);
+        res.status(200).json({ total: count, response: cities, ok: true });
     }
     catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json({ message: err.message, ok: false });
     }
 });
 exports.getAllCities = getAllCities;
@@ -52,13 +54,14 @@ const getCitiesById = (req, res = city_module_1.response) => __awaiter(void 0, v
     const { id } = req.params;
     try {
         const foundCity = yield cityRepository.getOneCitiesById(id);
+        const count = yield cityRepository.countCities();
         if (!foundCity) {
-            res.status(400).json({ message: "Error fetching city" });
+            res.status(400).json({ message: "Error fetching city", ok: false });
         }
-        res.json({ foundCity });
+        res.status(200).json({ total: count, foundCity, ok: true });
     }
     catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json({ message: err.message, ok: false });
     }
 });
 exports.getCitiesById = getCitiesById;
@@ -69,13 +72,14 @@ const getCityByQuery = (req, res = city_module_1.response) => __awaiter(void 0, 
         const cities = yield cityRepository.getCitiesByQueries({
             $or: [{ name }, { country }, { img }],
         });
+        const count = yield cityRepository.countCities();
         if (!cities) {
-            return res.status(400).json({ message: "Error while fetching cities" });
+            return res.status(400).json({ message: "Error while fetching cities", ok: false });
         }
-        return res.status(200).json({ cities });
+        return res.status(200).json({ total: count, cities, count, ok: true });
     }
     catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json({ message: err.message, ok: false });
     }
 });
 exports.getCityByQuery = getCityByQuery;

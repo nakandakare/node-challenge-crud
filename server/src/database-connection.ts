@@ -1,9 +1,7 @@
 import mongoose from "mongoose";
-//@ts-ignore
-import { KEYS } from "../keys";
 
 mongoose
-  .connect(KEYS.mongoURI, {
+  .connect(process.env.mongoURI || '', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
