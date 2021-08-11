@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
+import { CityCard } from '../components/CityCard'
+
 import { connect } from 'react-redux'
 import { cityActions } from '../redux/actions/cityActions'
-
 import Preloader from '../components/Preloader'
-import { CityCard } from '../components/CityCard'
 import NotYetCard from '../components/NotYetCard'
 
 const Cities = (props) => {
@@ -22,6 +22,7 @@ const Cities = (props) => {
                         ? props.cities.map(city => <CityCard key={city._id} {...city} />)
                         : <NotYetCard>
                             Cities have not been added yet
+
                         </NotYetCard>
             }
         </div>

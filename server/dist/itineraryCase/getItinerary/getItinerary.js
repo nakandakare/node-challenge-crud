@@ -43,7 +43,7 @@ const getAll = (_req, res = itinerary_module_1.response) => __awaiter(void 0, vo
         }
         res.status(200).json({
             itineraries,
-            count,
+            total: count,
             ok: true,
         });
     }

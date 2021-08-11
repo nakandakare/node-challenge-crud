@@ -39,7 +39,7 @@ const createCity = (req, res = city_module_1.response) => __awaiter(void 0, void
     try {
         const foundCity = yield cityRepository.getOneCity({ name: name === null || name === void 0 ? void 0 : name.toLowerCase() });
         if (foundCity) {
-            res.status(400).json({ message: `The city ${name} has already been saved in database`, ok: false });
+            res.status(400).json({ message: `The city ${name} is already created`, ok: false });
         }
         else {
             const savedCity = yield newCity.save();

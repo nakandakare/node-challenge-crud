@@ -2,8 +2,10 @@
 import { Router } from "express";
 const router: Router = Router();
 
-import { get } from "../itineraryCase/itinerary.controller";
+//Controllers
+import { get } from "../cases/itineraryCase/itinerary.controller";
 
+/*obtener itinerarios*/
 router.get('/', get.getAll);
 
 export default router;
