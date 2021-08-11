@@ -5,7 +5,6 @@ const citySchema = new mongoose_1.Schema({
     name: {
         type: String,
         required: [true, 'Name is required'],
-        lowercase: true,
     },
     country: {
         type: String,
