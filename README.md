@@ -8,7 +8,9 @@
 - 🔭 Validacion de los inputs con Joi
 
 <h3>Ejecutando las pruebas:</h3>
-Para ejecturar esta app es necesario crear un archivo .env
+<pre>1. Crear archivo .env</pre>
+<pre>2. npm install</pre>
+<pre>3. npm start</pre>
 
 <h3>DEMO:</h3>
 
