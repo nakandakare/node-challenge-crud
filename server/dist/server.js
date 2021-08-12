@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importDefault(require("./app"));
 const init = () => {
     app_1.default.listen(app_1.default.get('port'), () => {
-        console.log("El servidor se está ejecutando en el port: " + app_1.default.get('port'));
+        console.log("The server is running on port: " + app_1.default.get('port'));
     });
 };
 init();

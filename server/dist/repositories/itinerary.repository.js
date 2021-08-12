@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateOneItinerary = exports.getItineraryByOne = exports.getItinerariesByCityId = exports.countItineraries = exports.getAllItineraries = void 0;
+exports.findAndUpdateOneItinerary = exports.updateOneItinerary = exports.getItineraryByOne = exports.getItinerariesByCityId = exports.countItineraries = exports.getAllItineraries = void 0;
 const Itinerary_1 = __importDefault(require("../database/models/Itinerary"));
 const getAllItineraries = () => __awaiter(void 0, void 0, void 0, function* () { return yield Itinerary_1.default.find({}); });
 exports.getAllItineraries = getAllItineraries;
@@ -24,4 +24,6 @@ const getItineraryByOne = (value) => __awaiter(void 0, void 0, void 0, function*
 exports.getItineraryByOne = getItineraryByOne;
 const updateOneItinerary = (filter, update) => __awaiter(void 0, void 0, void 0, function* () { return yield Itinerary_1.default.updateOne(filter, update); });
 exports.updateOneItinerary = updateOneItinerary;
+const findAndUpdateOneItinerary = (filter, update, option) => __awaiter(void 0, void 0, void 0, function* () { return yield Itinerary_1.default.findOneAndUpdate(filter, update, option); });
+exports.findAndUpdateOneItinerary = findAndUpdateOneItinerary;
 //# sourceMappingURL=itinerary.repository.js.map

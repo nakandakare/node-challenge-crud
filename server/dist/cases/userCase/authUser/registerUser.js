@@ -59,7 +59,7 @@ const registerUser = (req, res = user_module_1.response) => __awaiter(void 0, vo
                 userPic,
                 country,
             });
-            const { id: savedId, firstName: savedFirstName, userPic: savedUserPic, } = yield newUser.save();
+            const { id: savedId, firstName: savedFirstName, userPic: savedUserPic } = yield newUser.save();
             const token = yield generarJWT_1.default(savedId, savedFirstName, savedUserPic);
             res.json({
                 response: { token, firstName: savedFirstName, userPic: savedUserPic },

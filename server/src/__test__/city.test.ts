@@ -6,6 +6,10 @@ beforeAll(() => {
   testServer = app.listen(4000);
 });
 
+afterAll((done) => {
+  testServer.close(done);
+});
+
 describe("Get /api/cities", () => {
   it("Return all cities", async () => {
     const response = await request(app).get("/api/cities");
@@ -15,8 +19,4 @@ describe("Get /api/cities", () => {
     expect(response.body).not.toBeNull();
     expect(Array.isArray(response.body.response)).toBe(true);
   });
-});
-
-afterAll((done) => {
-  testServer.close(done);
 });

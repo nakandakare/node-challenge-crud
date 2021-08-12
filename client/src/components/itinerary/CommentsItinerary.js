@@ -4,7 +4,7 @@ import NewComment from './commentsItinerary/NewComment'
 import { NavItinerary } from './NavItinerary'
 
 const CommentsItinerary = (props) => {
-    const { setSection, section, _id, userComments, commentsState, setCommentsState,setUserComments } = props
+    const { setSection, section, _id, userComments, commentsState, setCommentsState, setUserComments } = props
 
     return (
         <div className="commentsSection">

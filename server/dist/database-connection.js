@@ -10,6 +10,6 @@ mongoose_1.default
     useCreateIndex: true,
     useUnifiedTopology: true,
 })
-    .then((db) => console.log('Conexión a MongoDB establecida'))
+    .then((db) => console.log('Connected successfully to MongoDB'))
     .catch(err => console.log(err));
 //# sourceMappingURL=database-connection.js.map

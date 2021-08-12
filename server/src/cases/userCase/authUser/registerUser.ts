@@ -29,12 +29,10 @@ export const registerUser = async (req: any, res = response) => {
         country,
       });
 
-      const {
-        id: savedId,
-        firstName: savedFirstName,
-        userPic: savedUserPic,
-      } = await newUser.save();
+      const { id: savedId, firstName: savedFirstName, userPic: savedUserPic } = await newUser.save();
+
       const token = await generarJWT(savedId, savedFirstName, savedUserPic);
+
       res.json({
         response: { token, firstName: savedFirstName, userPic: savedUserPic },
         success: true,
