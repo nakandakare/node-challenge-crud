@@ -21,7 +21,7 @@ router.post("/signup", validateData(registerSchema), register.registerUser);
 /* login */
 router.post("/signin", validateData(loginSchema), login.loginUser);
 
-/* login with token */
+/* login con token */
 router.get("/signinls", passport.authenticate('jwt', {session: false}), login.loginByToken);
 
 export default router;

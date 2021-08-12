@@ -1,5 +1,5 @@
 import * as get from "./getItinerary/getItinerary";
 import * as create from "./createItinerary/createItinerary";
-import * as getItineraryData from "./getItinerary/getItineraryData";
+import * as logic from "./logicItinerary/logicItinerary";
 
-export { get, getItineraryData, create };
+export { get, logic, create };

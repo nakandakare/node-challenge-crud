@@ -18,8 +18,8 @@ const Itinerary = (props) => {
     const checkLikeUser = async () => {
         if (userLogged) {
             const response = await checkUser(_id, userLogged)
-            setUserComments(response.arrayOwnerCheck)
-            setLikeItinerary({ ...likeItinerary, liked: response.likedChek })
+            setUserComments(response.arrayOwnerCheck);
+            setLikeItinerary({ ...likeItinerary, liked: response.likedChek });
         }
     }
 

@@ -19,11 +19,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.create = exports.getItineraryData = exports.get = void 0;
+exports.create = exports.logic = exports.get = void 0;
 const get = __importStar(require("./getItinerary/getItinerary"));
 exports.get = get;
 const create = __importStar(require("./createItinerary/createItinerary"));
 exports.create = create;
-const getItineraryData = __importStar(require("./getItinerary/getItineraryData"));
-exports.getItineraryData = getItineraryData;
+const logic = __importStar(require("./logicItinerary/logicItinerary"));
+exports.logic = logic;
 //# sourceMappingURL=itinerary.controller.js.map

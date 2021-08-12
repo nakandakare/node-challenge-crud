@@ -66,4 +66,4 @@ const likeItinerary = (req, res = itinerary_module_1.response) => __awaiter(void
     }
 });
 exports.likeItinerary = likeItinerary;
-//# sourceMappingURL=getItineraryData.js.map
+//# sourceMappingURL=likeItinerary.js.map
