@@ -1,6 +1,6 @@
 import { response } from "../itinerary.module";
 import * as itineraryRepository from "../../../repositories/itinerary.repository";
-import { IItinerary } from "database/models/Itinerary";
+import { IItinerary } from "../../../database/models/Itinerary";
 
 //Check de Usuario
 export const checkUser = async (req: any, res = response) => {
