@@ -37,7 +37,7 @@ const ItinerarySchema = new mongoose_1.Schema({
         type: String,
         default: 0,
     },
-    hashtag: {
+    hashtags: {
         type: [String],
     },
     comments: {

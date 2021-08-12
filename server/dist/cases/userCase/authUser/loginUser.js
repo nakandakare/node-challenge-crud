@@ -31,7 +31,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loginUser = void 0;
+exports.loginByToken = exports.loginUser = void 0;
 const user_module_1 = require("../user.module");
 const userRespository = __importStar(require("../../../repositories/user.repository"));
 const comparePasswords_1 = __importDefault(require("../../../utils/comparePasswords"));
@@ -42,28 +42,44 @@ const loginUser = (req, res = user_module_1.response) => __awaiter(void 0, void 
     try {
         const foundUser = yield userRespository.getUserByMail(email);
         if (!foundUser) {
-            res
-                .status(400)
-                .json({
+            res.status(400).json({
                 message: `User or password is invalid, please try again.`,
                 ok: false,
             });
         }
         const validPassword = yield comparePasswords_1.default(password, foundUser === null || foundUser === void 0 ? void 0 : foundUser.password);
         if (!validPassword) {
-            res
-                .status(400)
-                .json({
+            res.status(400).json({
                 message: `User or password is invalid, please try again.`,
                 ok: false,
             });
         }
         const token = yield generarJWT_1.default(foundUser === null || foundUser === void 0 ? void 0 : foundUser.id, foundUser === null || foundUser === void 0 ? void 0 : foundUser.firstName, foundUser === null || foundUser === void 0 ? void 0 : foundUser.userPic);
-        res.status(200).json({ success: true, response: { token, firstName: foundUser === null || foundUser === void 0 ? void 0 : foundUser.firstName, userPic: foundUser === null || foundUser === void 0 ? void 0 : foundUser.userPic } });
+        res
+            .status(200)
+            .json({
+            success: true,
+            response: {
+                token,
+                firstName: foundUser === null || foundUser === void 0 ? void 0 : foundUser.firstName,
+                userPic: foundUser === null || foundUser === void 0 ? void 0 : foundUser.userPic,
+            },
+        });
     }
     catch (err) {
         res.status(500).json({ success: false, message: err.message });
     }
 });
 exports.loginUser = loginUser;
+//Log In con LocalStorage
+const loginByToken = (req, res = user_module_1.response) => __awaiter(void 0, void 0, void 0, function* () {
+    if (req.user) {
+        const { userPic, firstName } = req.user;
+        res.status(200).json({ success: true, response: { userPic, firstName } });
+    }
+    else {
+        res.status(500).json({ success: false, message: "no token found." });
+    }
+});
+exports.loginByToken = loginByToken;
 //# sourceMappingURL=loginUser.js.map

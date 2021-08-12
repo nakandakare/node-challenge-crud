@@ -28,9 +28,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAll = void 0;
+exports.getByCityId = exports.getByCityName = exports.getAll = void 0;
 const itinerary_module_1 = require("../itinerary.module");
 const itineraryRepository = __importStar(require("../../../repositories/itinerary.repository"));
+const cityRepository = __importStar(require("../../../repositories/city.repository"));
 const getAll = (_req, res = itinerary_module_1.response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const itineraries = yield itineraryRepository.getAllItineraries();
@@ -38,7 +39,7 @@ const getAll = (_req, res = itinerary_module_1.response) => __awaiter(void 0, vo
         if (!itineraries || itineraries.length <= 0) {
             return res.status(401).json({
                 msg: "No itineraries found",
-                ok: false
+                ok: false,
             });
         }
         res.status(200).json({
@@ -52,4 +53,52 @@ const getAll = (_req, res = itinerary_module_1.response) => __awaiter(void 0, vo
     }
 });
 exports.getAll = getAll;
+const getByCityName = (req, res = itinerary_module_1.response) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const cityName = req.params.city;
+        const cityFound = yield cityRepository.getCityByOne({ name: cityName });
+        const itinerariesByCity = yield itineraryRepository.getItinerariesByCityId(cityFound === null || cityFound === void 0 ? void 0 : cityFound._id);
+        if (!itinerariesByCity) {
+            return res.status(401).json({
+                ok: false,
+                msg: `There is no itinerary with city name: ${cityName}`,
+            });
+        }
+        res.status(200).json({
+            ok: true,
+            itinerarios: itinerariesByCity,
+        });
+    }
+    catch (error) {
+        res.status(500).json({
+            ok: false,
+            message: error.msg,
+        });
+    }
+});
+exports.getByCityName = getByCityName;
+const getByCityId = (req, res = itinerary_module_1.response) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const cityId = req.params.id;
+        const cityFound = yield cityRepository.getCityByOne({ _id: cityId });
+        const itinerariesByCity = yield itineraryRepository.getItinerariesByCityId(cityFound === null || cityFound === void 0 ? void 0 : cityFound._id);
+        if (!itinerariesByCity) {
+            return res.status(401).json({
+                ok: false,
+                msg: `There is no itinerary with city id: ${cityId}`,
+            });
+        }
+        res.status(200).json({
+            ok: true,
+            response: itinerariesByCity,
+        });
+    }
+    catch (error) {
+        res.status(500).json({
+            ok: false,
+            message: error.msg,
+        });
+    }
+});
+exports.getByCityId = getByCityId;
 //# sourceMappingURL=getItinerary.js.map

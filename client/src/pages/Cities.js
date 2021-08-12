@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CityCard } from '../components/CityCard'
 
 import { connect } from 'react-redux'
@@ -19,10 +19,10 @@ const Cities = (props) => {
                 props.preloaderCities
                     ? <Preloader />
                     : props.cities.length > 0
-                        ? props.cities.map(city => <CityCard key={city._id} {...city} />)
+                        ? props.cities.map(city => <CityCard key={city._id} {...city}/>)
                         : <NotYetCard>
                             Cities have not been added yet
-
+                            
                         </NotYetCard>
             }
         </div>
@@ -40,4 +40,4 @@ const mapDispatchToProps = {
     allCities: cityActions.allCities
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cities);
+export default connect(mapStateToProps,mapDispatchToProps)(Cities);

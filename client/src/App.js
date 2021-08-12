@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import Header from './components/nav/Header'
 import Auth from './pages/Auth';
 import Cities from './pages/Cities'
+import City from './pages/City';
 import { authActions } from './redux/actions/authActions';
 import Footer from './components/Footer';
 
@@ -27,6 +28,7 @@ function App(props) {
             <Switch>
                 <Route exact path="/" component={Cities} />
                 {!props.userLogged && <Route path="/access" component={Auth} />}
+                <Route exact path="/city/:id" component={City} />
                 <Redirect to="/" />
             </Switch>
             <Footer />

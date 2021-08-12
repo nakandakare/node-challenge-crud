@@ -28,7 +28,7 @@ passport.use(JWTStrategy);
 
 // routes
 app.use('/api', citiesRoutes);
-app.use('/itineraries', itineraryRoutes);
+app.use('/api', itineraryRoutes);
 app.use('/api/user', userRoutes);
 
 export default app;

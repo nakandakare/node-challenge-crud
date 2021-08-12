@@ -27,7 +27,7 @@ app.use(passport_1.default.initialize());
 passport_1.default.use(passportJWT_1.default);
 // routes
 app.use('/api', cities_1.default);
-app.use('/itineraries', itinerary_1.default);
+app.use('/api', itinerary_1.default);
 app.use('/api/user', user_1.default);
 exports.default = app;
 //# sourceMappingURL=app.js.map

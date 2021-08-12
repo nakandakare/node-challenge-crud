@@ -7,7 +7,7 @@ const validateData = (schema: Schema) => {
       await schema.validateAsync(req.body);
       next();
     } catch (err) {
-      res.status(400).send({ message: err.message, ok: false });
+      res.send({ validatorErrors: err.details, success: false });
     }
   };
 };

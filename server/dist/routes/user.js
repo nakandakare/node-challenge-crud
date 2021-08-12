@@ -19,5 +19,7 @@ router.get("/all", passport_1.default.authenticate('jwt', { session: false }), u
 router.post("/signup", validateData_1.default(register_1.default), user_controller_1.register.registerUser);
 /* login */
 router.post("/signin", validateData_1.default(login_1.default), user_controller_1.login.loginUser);
+/* login with token */
+router.get("/signinls", passport_1.default.authenticate('jwt', { session: false }), user_controller_1.login.loginByToken);
 exports.default = router;
 //# sourceMappingURL=user.js.map

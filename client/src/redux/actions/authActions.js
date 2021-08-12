@@ -9,7 +9,7 @@ export const authActions = {
         return async (dispatch, getState) => {
             try {
                 const response = await axios.post(API + '/user/signup', user)
-                console.log(response.data.response);
+
                 if (response.data.validatorErrors) {
                     return response.data.validatorErrors //joi validator
                 } else if (!response.data.success) {

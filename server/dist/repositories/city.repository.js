@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.countCities = exports.getCitiesByQueries = exports.getOneCitiesById = exports.getOneCity = exports.getAllCities = void 0;
+exports.countCities = exports.getCityByOne = exports.getCitiesByQueries = exports.getOneCitiesById = exports.getOneCity = exports.getAllCities = void 0;
 const City_1 = __importDefault(require("../database/models/City"));
 const getAllCities = () => __awaiter(void 0, void 0, void 0, function* () { return yield City_1.default.find(); });
 exports.getAllCities = getAllCities;
@@ -22,6 +22,8 @@ const getOneCitiesById = (id) => __awaiter(void 0, void 0, void 0, function* () 
 exports.getOneCitiesById = getOneCitiesById;
 const getCitiesByQueries = (queries) => __awaiter(void 0, void 0, void 0, function* () { return yield City_1.default.find(queries); });
 exports.getCitiesByQueries = getCitiesByQueries;
+const getCityByOne = (value) => __awaiter(void 0, void 0, void 0, function* () { return yield City_1.default.findOne(value); });
+exports.getCityByOne = getCityByOne;
 const countCities = () => __awaiter(void 0, void 0, void 0, function* () { return yield City_1.default.countDocuments(); });
 exports.countCities = countCities;
 //# sourceMappingURL=city.repository.js.map

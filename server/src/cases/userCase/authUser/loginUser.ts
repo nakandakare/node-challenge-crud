@@ -1,4 +1,4 @@
-import { response, User } from "../user.module";
+import { response } from "../user.module";
 import * as userRespository from "../../../repositories/user.repository";
 import { IUser } from "database/models/User";
 import comparePasswords from "../../../utils/comparePasswords";
@@ -12,27 +12,46 @@ export const loginUser = async (req: any, res = response) => {
     const foundUser: IUser | null = await userRespository.getUserByMail(email);
 
     if (!foundUser) {
-      res
-        .status(400)
-        .json({
-          message: `User or password is invalid, please try again.`,
-          ok: false,
-        });
+      res.status(400).json({
+        message: `User or password is invalid, please try again.`,
+        ok: false,
+      });
     }
     const validPassword = await comparePasswords(password, foundUser?.password);
 
     if (!validPassword) {
-      res
-        .status(400)
-        .json({
-          message: `User or password is invalid, please try again.`,
-          ok: false,
-        });
+      res.status(400).json({
+        message: `User or password is invalid, please try again.`,
+        ok: false,
+      });
     }
 
-    const token = await generarJWT( foundUser?.id, foundUser?.firstName, foundUser?.userPic );
-    res.status(200).json({ success: true, response: { token, firstName: foundUser?.firstName, userPic: foundUser?.userPic }});
+    const token = await generarJWT(
+      foundUser?.id,
+      foundUser?.firstName,
+      foundUser?.userPic
+    );
+    res
+      .status(200)
+      .json({
+        success: true,
+        response: {
+          token,
+          firstName: foundUser?.firstName,
+          userPic: foundUser?.userPic,
+        },
+      });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+//Log In con LocalStorage
+export const loginByToken = async (req: any, res = response) => {
+  if (req.user) {
+    const { userPic, firstName } = req.user;
+    res.status(200).json({ success: true, response: { userPic, firstName }});
+  } else {
+    res.status(500).json({ success: false, message: "no token found." });
   }
 };

@@ -52,7 +52,7 @@ const ItinerarySchema = new Schema({
     type: String,
     default: 0,
   },
-  hashtag: {
+  hashtags: {
     type: [String],
   },
   comments: {
