@@ -8,9 +8,9 @@ export const createCity = async (req: any, res = response) => {
 
   const newCity: ICity = new City({ name, country, img });
 
-  //Verifica si la ciudad ya se encuentra en la base de datos (case insensitive)
+  //Verifica si la ciudad ya se encuentra en la base de datos.
   try {
-    const foundCity = await cityRepository.getOneCity({ name: name?.toLowerCase() });
+    const foundCity = await cityRepository.getOneCity({ name });
     if (foundCity) {
       res.status(400).json({ message: `The city ${name} is already created`, ok: false });
     } else {
