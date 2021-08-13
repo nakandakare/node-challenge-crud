@@ -18,6 +18,9 @@ let testServer;
 beforeAll(() => {
     testServer = app_1.default.listen(4000);
 });
+afterAll((done) => {
+    testServer.close(done);
+});
 describe("Get /api/cities", () => {
     it("Return all cities", () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield supertest_1.default(app_1.default).get("/api/cities");
@@ -27,8 +30,5 @@ describe("Get /api/cities", () => {
         expect(response.body).not.toBeNull();
         expect(Array.isArray(response.body.response)).toBe(true);
     }));
-});
-afterAll((done) => {
-    testServer.close(done);
 });
 //# sourceMappingURL=city.test.js.map

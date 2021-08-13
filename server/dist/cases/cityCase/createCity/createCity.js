@@ -35,9 +35,9 @@ const cityRepository = __importStar(require("../../../repositories/city.reposito
 const createCity = (req, res = city_module_1.response) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, country, img } = req.body;
     const newCity = new city_module_1.City({ name, country, img });
-    //Verifica si la ciudad ya se encuentra en la base de datos (case insensitive)
+    //Verifica si la ciudad ya se encuentra en la base de datos.
     try {
-        const foundCity = yield cityRepository.getOneCity({ name: name === null || name === void 0 ? void 0 : name.toLowerCase() });
+        const foundCity = yield cityRepository.getOneCity({ name });
         if (foundCity) {
             res.status(400).json({ message: `The city ${name} is already created`, ok: false });
         }

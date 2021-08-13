@@ -10,7 +10,7 @@ export const registerUser = async (req: any, res = response) => {
 
   try {
     //Verifica si la cuenta ya se encuentra en la base de datos.
-    const foundUser = await userRespository.getUserByMail(email);
+    const foundUser: IUser | null = await userRespository.getUserByMail(email);
     if (foundUser) {
       res
         .status(400)
